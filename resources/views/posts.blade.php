@@ -1,18 +1,21 @@
 @extends('layout')
 
 @section('content')
-    @foreach ($posts as $post)
-    <article>
-        <h1>
-            <a href="/posts/{{ $post->slug}}">
-                {{ $post->title }}
+@foreach ($posts as $post)
+<article>
+    <h1>
+        <a href="/posts/{{ $post->slug}}">
+            {{ $post->title }}
+    </h1>
+    </a>
+    <p>
+        <a href="/categories/{{ $post->category->slug}}">{{ $post->category->name}} </a>
+    </p>
 
-            </a>
-        </h1>
-    </article>
+</article>
 
-    <div>
-        {!! $post->body !!}
-    </div>
-    @endforeach
+<div>
+    {!! $post->body !!}
+</div>
+@endforeach
 @endsection
