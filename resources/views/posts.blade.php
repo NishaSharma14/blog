@@ -13,6 +13,7 @@
             href="/categories/{{ $post->category->slug}}">{{ $post->category->name}} </a>
         </a>
     </p>
+    Published <time>{{$post->created_at->diffForHumans()}}</time>
 </article>
 
 <div>
