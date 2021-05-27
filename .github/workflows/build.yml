@@ -6,16 +6,6 @@ jobs:
     name: Laravel (PHP ${{ matrix.php-versions }})
     runs-on: ubuntu-latest
     services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: 
-          MYSQL_DATABASE: 'laravel'
-          MYSQL_USER: 'root'
-          MYSQL_PASSWORD: 
-        ports:
-          - 3306/tcp
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       redis:
         image: redis
         ports:
@@ -34,7 +24,12 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, dom, fileinfo, mysql
           coverage: xdebug #optional
-      - name: Start mysql service
+        env:
+          MYSQL_ROOT_PASSWORD:
+          MYSQL_DATABASE: 'laravel'
+          MYSQL_USER: 'root'
+          MYSQL_PASSWORD:
+      - name: Start mysql services
         run: sudo /etc/init.d/mysql start
       - name: Get composer cache directory
         id: composercache
