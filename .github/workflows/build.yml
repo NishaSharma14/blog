@@ -47,7 +47,7 @@ jobs:
       - name: Copy Env File
         run: cp .env.example .env
       - name: Migrate Test Database
-        run: mysql -h 127.0.0.1 --port 3306 -u root -e php artisan migrate --seed --force
+        run: mysql -h 127.0.0.1 --port 3306 -u root -e php artisan migrate
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
