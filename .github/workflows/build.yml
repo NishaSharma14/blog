@@ -47,9 +47,7 @@ jobs:
       - name: Copy Env File
         run: cp .env.example .env
       - name: Create Database
-        run: mysql -h 127.0.0.1 --port 3306 -u root -e 'CREATE DATABASE IF NOT EXISTS laravel;'
-      - name: Migrate Test Database
-        run: php artisan migrate --env=testing --seed --force      
+        run: mysql -h 127.0.0.1 --port 3306 -u root -e 'CREATE DATABASE IF NOT EXISTS laravel;'     
         env:
           DB_PORT: 3306
           REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
