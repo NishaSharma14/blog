@@ -25,10 +25,8 @@ jobs:
           extensions: mbstring, dom, fileinfo, mysql
           coverage: xdebug #optional
         env:
-          MYSQL_ROOT_PASSWORD:
           MYSQL_DATABASE: 'laravel'
           MYSQL_USER: 'root'
-          MYSQL_PASSWORD:
       - name: Start mysql services
         run: sudo /etc/init.d/mysql start
       - name: Get composer cache directory
