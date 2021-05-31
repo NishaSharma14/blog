@@ -28,8 +28,11 @@ jobs:
       run: |
         mkdir -p database
         touch database/laravel
+    - name: Start mysql services
+      run: sudo /etc/init.d/mysql start
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
+        DB_PORT: 3306
         DB_CONNECTION: mysql
         DB_DATABASE: laravel
       run: vendor/bin/phpunit
